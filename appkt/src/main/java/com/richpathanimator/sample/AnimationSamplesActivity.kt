@@ -7,35 +7,36 @@ import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 
 import com.richpathanimator.RichPathAnimator
-import kotlinx.android.synthetic.main.activity_animation_samples.*
+import com.richpathanimator.sample.databinding.ActivityAnimationSamplesBinding
 
 class AnimationSamplesActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityAnimationSamplesBinding;
     private var reverse = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityAnimationSamplesBinding.inflate(layoutInflater);
         setContentView(R.layout.activity_animation_samples)
 
         animateCommand()
 
-        animalRichPathView.setOnClickListener { animateAnimal() }
-        icArrowSearchRichPathView.setOnClickListener { animateArrowToSearch() }
-        icNotificationsRichPathView.setOnClickListener { animateNotification() }
-        icPlaylistAddCheckRichPathView.setOnClickListener { animatePlaylistAddCheck() }
-        loveFaceRichPathView.setOnClickListener { animateLoveFace() }
+        binding.icArrowSearchRichPathView.setOnClickListener { animateArrowToSearch() }
+        binding.icNotificationsRichPathView.setOnClickListener { animateNotification() }
+        binding.icPlaylistAddCheckRichPathView.setOnClickListener { animatePlaylistAddCheck() }
+        binding.loveFaceRichPathView.setOnClickListener { animateLoveFace() }
     }
 
     private fun animateCommand() {
 
-        val part1 = icCommandRichPathView.findRichPathByName("part1")!!
-        val part2 = icCommandRichPathView.findRichPathByName("part2")!!
-        val part3 = icCommandRichPathView.findRichPathByName("part3")!!
-        val part4 = icCommandRichPathView.findRichPathByName("part4")!!
-        val part5 = icCommandRichPathView.findRichPathByName("part5")!!
-        val part6 = icCommandRichPathView.findRichPathByName("part6")!!
-        val part7 = icCommandRichPathView.findRichPathByName("part7")!!
-        val part8 = icCommandRichPathView.findRichPathByName("part8")!!
+        val part1 = binding.icCommandRichPathView.findRichPathByName("part1")!!
+        val part2 = binding.icCommandRichPathView.findRichPathByName("part2")!!
+        val part3 = binding.icCommandRichPathView.findRichPathByName("part3")!!
+        val part4 = binding.icCommandRichPathView.findRichPathByName("part4")!!
+        val part5 = binding.icCommandRichPathView.findRichPathByName("part5")!!
+        val part6 = binding.icCommandRichPathView.findRichPathByName("part6")!!
+        val part7 = binding.icCommandRichPathView.findRichPathByName("part7")!!
+        val part8 = binding.icCommandRichPathView.findRichPathByName("part8")!!
 
         RichPathAnimator
                 .animate(part1)
@@ -75,7 +76,7 @@ class AnimationSamplesActivity : AppCompatActivity() {
         val elephantPathData = getString(R.string.elephant_path)
         val bullPathData = getString(R.string.bull_path)
 
-        val richPath = animalRichPathView.findFirstRichPath()!!
+        val richPath = binding.animalRichPathView.findFirstRichPath()!!
 
         RichPathAnimator
                 .animate(richPath)
@@ -95,10 +96,10 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animateArrowToSearch() {
 
-        val searchCircle = icArrowSearchRichPathView.findRichPathByName("search_circle")!!
-        val stem = icArrowSearchRichPathView.findRichPathByName("stem")!!
-        val arrowTop = icArrowSearchRichPathView.findRichPathByName("arrow_head_top")!!
-        val arrowBottom = icArrowSearchRichPathView.findRichPathByName("arrow_head_bottom")!!
+        val searchCircle = binding.icArrowSearchRichPathView.findRichPathByName("search_circle")!!
+        val stem = binding.icArrowSearchRichPathView.findRichPathByName("stem")!!
+        val arrowTop = binding.icArrowSearchRichPathView.findRichPathByName("arrow_head_top")!!
+        val arrowBottom = binding.icArrowSearchRichPathView.findRichPathByName("arrow_head_bottom")!!
 
         if (reverse) {
             RichPathAnimator.animate(stem)
@@ -124,8 +125,8 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animateNotification() {
 
-        val top = icNotificationsRichPathView.findRichPathByIndex(0)!!
-        val bottom = icNotificationsRichPathView.findRichPathByIndex(1)!!
+        val top = binding.icNotificationsRichPathView.findRichPathByIndex(0)!!
+        val bottom = binding.icNotificationsRichPathView.findRichPathByIndex(1)!!
 
         RichPathAnimator.animate(top)
                 .interpolator(DecelerateInterpolator())
@@ -141,11 +142,11 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animatePlaylistAddCheck() {
 
-        val line1 = icPlaylistAddCheckRichPathView.findRichPathByName("line1")!!
-        val line2 = icPlaylistAddCheckRichPathView.findRichPathByName("line2")!!
-        val line3 = icPlaylistAddCheckRichPathView.findRichPathByName("line3")!!
-        val tick = icPlaylistAddCheckRichPathView.findRichPathByName("tick")!!
-        val line3AndTick = icPlaylistAddCheckRichPathView.findRichPathByName("line3_tick")!!
+        val line1 = binding.icPlaylistAddCheckRichPathView.findRichPathByName("line1")!!
+        val line2 = binding.icPlaylistAddCheckRichPathView.findRichPathByName("line2")!!
+        val line3 = binding.icPlaylistAddCheckRichPathView.findRichPathByName("line3")!!
+        val tick = binding.icPlaylistAddCheckRichPathView.findRichPathByName("tick")!!
+        val line3AndTick = binding.icPlaylistAddCheckRichPathView.findRichPathByName("line3_tick")!!
 
         line1.trimPathEnd = 0f
         line2.trimPathEnd = 0f
@@ -194,8 +195,8 @@ class AnimationSamplesActivity : AppCompatActivity() {
 
     private fun animateLoveFace() {
 
-        val rEye = loveFaceRichPathView?.findRichPathByName("r_eye")!!
-        val lEye = loveFaceRichPathView?.findRichPathByName("l_eye")!!
+        val rEye = binding.loveFaceRichPathView?.findRichPathByName("r_eye")!!
+        val lEye = binding.loveFaceRichPathView?.findRichPathByName("l_eye")!!
 
         rEye.isPivotToCenter = true
         lEye.isPivotToCenter = true

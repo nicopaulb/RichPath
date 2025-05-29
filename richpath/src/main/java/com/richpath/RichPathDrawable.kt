@@ -21,7 +21,7 @@ class RichPathDrawable(private val vector: Vector?, private val scaleType: Image
         listenToPathsUpdates()
     }
 
-    override fun onBoundsChange(bounds: Rect?) {
+    override fun onBoundsChange(bounds: Rect) {
         super.onBoundsChange(bounds)
         bounds?.let {
             if (it.width() > 0 && it.height() > 0) {

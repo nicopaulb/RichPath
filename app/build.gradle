@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.pathanimator.sample"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -18,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'com.richpathanimator.sample'
 }
 
 dependencies {
@@ -27,7 +27,7 @@ dependencies {
     })
 
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+    implementation "androidx.constraintlayout:constraintlayout:2.2.1"
     implementation "androidx.core:core-ktx:$ktxVersion"
 
     testImplementation "junit:junit:$junitVersion"

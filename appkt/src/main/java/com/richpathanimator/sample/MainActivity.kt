@@ -7,18 +7,20 @@ import android.view.animation.AccelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.richpathanimator.AnimationListener
 import com.richpathanimator.RichPathAnimator
-import kotlinx.android.synthetic.main.activity_main.*
+import com.richpathanimator.sample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding;
     private var richPathAnimator: RichPathAnimator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater);
         setContentView(R.layout.activity_main)
-        icAndroidRichPathView.setOnClickListener { animateAndroid() }
-        animationSamplesButton.setOnClickListener { openAnimationSamples() }
-        compoundViewSamplesButton.setOnClickListener { openCompoundViewSamples() }
+        binding.icAndroidRichPathView.setOnClickListener { animateAndroid() }
+        binding.animationSamplesButton.setOnClickListener { openAnimationSamples() }
+        binding.compoundViewSamplesButton.setOnClickListener { openCompoundViewSamples() }
     }
 
     override fun onResume() {
@@ -28,11 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun animateAndroid() {
 
-        val allPaths = icAndroidRichPathView.findAllRichPaths()
-        val head = icAndroidRichPathView.findRichPathByName("head")!!
-        val body = icAndroidRichPathView.findRichPathByName("body")!!
-        val rHand = icAndroidRichPathView.findRichPathByName("r_hand")!!
-        val lHand = icAndroidRichPathView.findRichPathByName("l_hand")!!
+        val allPaths = binding.icAndroidRichPathView.findAllRichPaths()
+        val head = binding.icAndroidRichPathView.findRichPathByName("head")!!
+        val body = binding.icAndroidRichPathView.findRichPathByName("body")!!
+        val rHand = binding.icAndroidRichPathView.findRichPathByName("r_hand")!!
+        val lHand = binding.icAndroidRichPathView.findRichPathByName("l_hand")!!
 
         richPathAnimator = RichPathAnimator.animate(*allPaths)
                 .trimPathEnd(0f, 1f)
