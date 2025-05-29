@@ -1,1 +1,1 @@
-include ':app', ':appkt', ':richpath', ':animator', 'buildSrc'
+include ':app', ':appkt', ':richpath', ':animator'
